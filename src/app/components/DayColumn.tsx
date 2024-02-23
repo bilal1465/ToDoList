@@ -29,7 +29,7 @@ export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = []}) => {
             {filteredTasks.map((task, index) => {
                 if (task.day === day) {
                     return (
-                        <TaskCard 
+                        <TaskCard
                         key={index} 
                         title={task.title} 
                         time={task.time} 

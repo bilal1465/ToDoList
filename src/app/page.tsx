@@ -2,6 +2,7 @@ import Image from "next/image";
 import {DayColumn} from "./components/DayColumn";
 import { IoTerminalSharp } from "react-icons/io5";
 import jsonData from "../taskInfo.json";
+import {AddTask} from "./components/AddTask";
 
 export default function Home() {
 

@@ -12,12 +12,12 @@ export type TaskCardProps = {
 
 export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, }) => {
     return(
-        <div className="flex h-[25%] justify-center items-center parent-div bg-green-300 pb-4 rounded shadow-xl relative">
-            <div className="child-div bg-white w-5/6 h-3/4 items-start rounded p-1">
-                <div className="text-left space-y-3">
+        <div className="flex justify-center items-start bg-green-300 p-4 pb-10 rounded shadow-xl relative">
+            <div className="flex bg-white items-start rounded overflow-auto">
+                <div className="flex flex-col p-1 text-left max-h-3/4 space-y-3 font-encoded-sans-condensed">
                     <h2>{title}</h2>
                     <h2>{time}</h2>
-                    <h2>{description}</h2>
+                    <p>{description}</p>
                 </div>
             </div>
             <div className="flex items-center absolute bottom-0 right-0 mr-4 grid grid-cols-3">

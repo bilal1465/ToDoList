@@ -15,7 +15,8 @@ const config: Config = {
       },
     },
     fontFamily: {
-      'sriracha': ['Sriracha', 'sans-serif']
+      'sriracha': ['Sriracha', 'sans-serif'],
+      'encoded-sans-condensed': ["Encoded Sans Condensed", "sans-serif"]
     }
   },
   plugins: [
