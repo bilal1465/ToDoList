@@ -1,3 +1,4 @@
+import { TbUvIndex } from 'react-icons/tb';
 import jsonData from '../../taskInfo.json';
 
 export const PrioritySelection = () => {
@@ -6,8 +7,8 @@ export const PrioritySelection = () => {
 
     return(
         <select className="w-1/2 rounded border border-black bg-white pl-1">
-            {numberOfOptions.map((taskNumber) => (
-                <option>{taskNumber + 1}</option>
+            {numberOfOptions.map((taskNumber,index) => (
+                <option key={index}>{taskNumber + 1}</option>
             ))}
         </select>
     )
