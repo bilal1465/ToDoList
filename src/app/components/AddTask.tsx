@@ -5,10 +5,12 @@ import { PrioritySelection } from "./PrioritySelection";
 import { DaysOfWeek } from "./DaysOfWeek";
 import jsonData from "../../taskInfo.json";
 
-export const AddTask = () => {
+type props = {
+    toggleAddButton: () => void;
+}
+
+export const AddTask: React.FC<props> = ({toggleAddButton}) => {
  
-
-
     return (
         <div className="fixed inset-0 flex justify-center items-center bg-opacity-80 backdrop-blur-sm" style={{zIndex: 1}}>
             <div className="flex flex-col items-center w-1/2 h-1/2 bg-green-300 rounded justify-center pt-5">
@@ -29,8 +31,8 @@ export const AddTask = () => {
                     </div>
                 </div>
             <div className="flex flex-row space-x-2 pt-1 pb-1 w-11/12">
-                <button className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Done</button>
-                <button className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Cancel</button>
+                <button onClick={toggleAddButton} className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Done</button>
+                <button onClick={toggleAddButton} className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Cancel</button>
             </div>
             </div>
         </div>
