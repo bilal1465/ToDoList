@@ -1,5 +1,4 @@
-import { TbUvIndex } from 'react-icons/tb';
-import jsonData from '../../taskInfo.json';
+import jsonData from '../taskInfo.json'
 
 export const PrioritySelection = () => {
 

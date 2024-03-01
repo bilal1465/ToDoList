@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {DayColumn} from "./components/DayColumn";
 import { IoTerminalSharp } from "react-icons/io5";
-import jsonData from "../taskInfo.json";
+import jsonData from "./taskInfo.json";
 import {AddTask} from "./components/AddTask";
 import { useState, useEffect } from "react";
 
@@ -13,10 +13,6 @@ export default function Home() {
 
   const toggleAddButton = () => {
       setIsClicked(!toggle);
-  }
-
-  const submitTask = () => {
-    
   }
   
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
