@@ -21,7 +21,7 @@ export default function Home() {
       {toggle && <AddTask toggleAddButton={toggleAddButton}/>}
       <div className="flex grid grid-cols-7 h-screen w-screen">
         {days.map((day) => (
-          <div className="flex flex-1 w-1/7 content-start justify-center border-r">
+          <div className="flex flex w-1/7 justify-center border-r">
             <DayColumn day={day} jsonData={jsonData} toggleAddButton={toggleAddButton}/>
           </div>
         ))}

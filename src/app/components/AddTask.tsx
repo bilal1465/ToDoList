@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from "react";
 import { PrioritySelection } from "./PrioritySelection";
-import { DaysOfWeek } from "./DaysOfWeek";
 
 type props = {
     toggleAddButton: () => void;
@@ -10,6 +9,10 @@ type props = {
 
 export const AddTask: React.FC<props> = ({toggleAddButton}) => {
  
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const [isClicked, setIsClicked] = useState<boolean[]>(new Array(days.length).fill(false));
+
     const [formData, setFormData] = useState({
         title: '',
         time: '',
@@ -30,6 +33,14 @@ export const AddTask: React.FC<props> = ({toggleAddButton}) => {
     
       const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
+      };
+
+      const handleClick = (event: React.MouseEvent<HTMLButtonElement>, index: number) => {
+        event.preventDefault();
+        const newIsClicked = Array.from({ length: isClicked.length }).fill(false) as boolean[];
+        newIsClicked[index] = true;
+        setIsClicked(newIsClicked);
+        setFormData({ ...formData, day: event.currentTarget.name });
       };
     
 
@@ -52,7 +63,18 @@ export const AddTask: React.FC<props> = ({toggleAddButton}) => {
                 <div className="w-1/2 pl-1"></div>
                 </div>                        
             </div>
-            <DaysOfWeek/>
+            <div className="flex flex-row space-x-1">
+                {days.map((day, index) => (
+                    <button
+                        key={index}
+                        onClick={(event) => handleClick(event, index)}
+                        name={day}
+                        className={`${isClicked[index] ? 'bg-blue-700' : 'bg-black'} text-white rounded w-1/2 px-1 hover:bg-blue-700 hover:scale-105 duration-150`}
+                    >
+                        {day}
+                    </button>
+            ))}
+            </div>
             <div className="flex w-full h-1/2 pt-2">
                 <textarea placeholder="Description" name="description" onChange={handleChange} className="resize-none w-full rounded border border-black pl-1"></textarea>
             </div>

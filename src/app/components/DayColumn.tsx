@@ -41,6 +41,7 @@ export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleA
                         title={task.title} 
                         time={task.time} 
                         description={task.description}
+                        day={task.day}
                         />
                     )
                 } else {
