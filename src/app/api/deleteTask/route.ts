@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 export async function GET(request: Request) {
-  return null
+  return new Response (null)
 }
 
 export async function POST(req: Request) {
