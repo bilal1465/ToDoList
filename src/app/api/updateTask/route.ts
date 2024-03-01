@@ -12,7 +12,6 @@ export async function POST(req: Request) {
   let tasks = JSON.parse(jsonData);
 
   tasks.push(body);
-  console.log(tasks);
   const updatedTasks = JSON.stringify(tasks);
 
   fs.writeFileSync("src/app/taskInfo.json", updatedTasks, "utf-8");

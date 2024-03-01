@@ -10,8 +10,6 @@ export async function POST(req: Request) {
     const jsonData = fs.readFileSync("src/app/taskInfo.json", "utf-8");
     let tasks = JSON.parse(jsonData);
 
-    console.log(body)
-
     const index = tasks.findIndex((obj: {title: string, time: string, day: string, description: string,}) => obj.description === body.description.description && obj.title === body.title.title)
     if (index !== -1) {
 
