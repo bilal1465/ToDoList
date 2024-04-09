@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 type DayColumnProps = {
     day: string;
     jsonData?: TaskCardProps[];
-    toggleAddButton: () => void;
+    toggleAddButton: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 
@@ -29,7 +29,7 @@ export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleA
     return (
         <div className="flex items-center flex-col space-y-3 px-5">
             <h1 className="font-sriracha text-3xl">{day}</h1>
-            <button onClick={() => toggleAddButton()}>
+            <button id={day} onClick={(event) => toggleAddButton(event)}>
                 <IoIosAddCircle size={30}/>
             </button>
             

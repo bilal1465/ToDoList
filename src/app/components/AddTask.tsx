@@ -5,18 +5,20 @@ import { PrioritySelection } from "./PrioritySelection";
 
 type props = {
     toggleAddButton: () => void;
+    dayOfTask: string;
 }
 
-export const AddTask: React.FC<props> = ({toggleAddButton}) => {
+export const AddTask: React.FC<props> = ({toggleAddButton, dayOfTask}) => {
  
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-    const [isClicked, setIsClicked] = useState<boolean[]>(new Array(days.length).fill(false));
+    const initialIsClickedState = days.map((day) => day === dayOfTask);
+    const [isClicked, setIsClicked] = useState<boolean[]>(initialIsClickedState);
 
     const [formData, setFormData] = useState({
         title: '',
         time: '',
-        day: '',
+        day: dayOfTask,
         description: '',
       });
     

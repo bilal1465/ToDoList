@@ -10,15 +10,20 @@ import { useState, useEffect } from "react";
 export default function Home() {
 
   const [toggle, setIsClicked] = useState(false);
+  const [dayOfTask, setDay] = useState("");
 
-  const toggleAddButton = () => {
-      setIsClicked(!toggle);
+  const toggleAddButton = (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (event) {
+      const clickedDay = event.currentTarget.id;
+      setDay(clickedDay)
+    }  
+    setIsClicked(!toggle);      
   }
   
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   return (
     <main className="flex">
-      {toggle && <AddTask toggleAddButton={toggleAddButton}/>}
+      {toggle && <AddTask dayOfTask={dayOfTask} toggleAddButton={toggleAddButton}/>}
       <div className="flex grid grid-cols-7 h-screen w-screen">
         {days.map((day) => (
           <div className="flex flex w-1/7 justify-center border-r">
