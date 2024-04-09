@@ -31,9 +31,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, da
         <div className="flex justify-center items-start bg-green-300 p-4 pb-10 w-[10dvw] rounded shadow-xl relative">
             <div className="flex bg-white items-start w-full rounded overflow-auto">
                 <div className="flex flex-col p-1 text-left max-h-3/4 space-y-3 font-encoded-sans-condensed">
-                    <h2>{title}</h2>
-                    <h2>{time}</h2>
-                    <p>{description}</p>
+                    <h2>Task: {title}</h2>
+                    <h2>Time: {time}</h2>
+                    <p>Description: {description}</p>
                 </div>
             </div>
             <div className="flex items-center absolute bottom-0 right-0 mr-4 grid grid-cols-3">
