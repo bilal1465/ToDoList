@@ -20,10 +20,16 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, da
         day: {day},
     };
 
-      const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
+      const handleDelete: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
         await fetch('/api/deleteTask/', {
           method: 'POST',
           body: JSON.stringify(data),
+        })
+      }
+
+      const handleEdit: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
+        await fetch('/api/editTask/', {
+          method: 'GET',
         })
       }
 
@@ -37,9 +43,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, da
                 </div>
             </div>
             <div className="flex items-center absolute bottom-0 right-0 mr-4 grid grid-cols-3">
-                <button onClick={handleClick}><MdCheck size={40} /></button>
-                <button><MdEdit size={30} /></button>
-                <button onClick={handleClick}><MdDelete size={30} /></button>
+                <button onClick={handleDelete}><MdCheck size={40} /></button>
+                <button onClick={handleEdit}><MdEdit size={30} /></button>
+                <button onClick={handleDelete}><MdDelete size={30} /></button>
             </div>            
         </div>
     )

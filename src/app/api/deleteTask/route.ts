@@ -12,7 +12,6 @@ export async function POST(req: Request) {
 
     const index = tasks.findIndex((obj: {title: string, time: string, day: string, description: string,}) => obj.description === body.description.description && obj.title === body.title.title)
     if (index !== -1) {
-
         tasks.splice(index, 1);
     }
 
