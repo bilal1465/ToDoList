@@ -5,13 +5,14 @@ import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 
 export type TaskCardProps = {
+    toggleEditButton: () => void;
     title: string; 
     time: string; 
     description: string; 
     day: string;
 };
 
-export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, day }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, day, toggleEditButton }) => {
 
     const data = {
         title: {title},
@@ -23,14 +24,20 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, da
       const handleDelete: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
         await fetch('/api/deleteTask/', {
           method: 'POST',
-          body: JSON.stringify(data),
+          body: JSON.stringify(data),          
         })
+
+
       }
 
       const handleEdit: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
+
         await fetch('/api/editTask/', {
-          method: 'GET',
-        })
+            method: 'POST',
+            body: JSON.stringify(data),
+          })
+
+        toggleEditButton();
       }
 
     return(

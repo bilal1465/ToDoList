@@ -4,18 +4,26 @@ import {TaskCard} from "./TaskCard";
 import {TaskCardProps} from './TaskCard';
 import { useState, useEffect } from "react";
 
+type TaskCardData = {
+    title: string;
+    time: string;
+    description: string;
+    day: string;
+};
+
+
 type DayColumnProps = {
     day: string;
-    jsonData?: TaskCardProps[];
+    jsonData?: TaskCardData[];
     toggleAddButton: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    toggleEditButton: () => void;
 };
 
 
 
+export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleAddButton, toggleEditButton}) => {
 
-export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleAddButton}) => {
-
-    const [filteredTasks, setFilteredTasks] = useState<TaskCardProps[]>(jsonData);
+    const [filteredTasks, setFilteredTasks] = useState<TaskCardData[]>(jsonData);
     
     const handleFilter = (day: string) => {
         const filtered = jsonData.filter((task) => task.day === day);
@@ -42,6 +50,7 @@ export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleA
                         time={task.time} 
                         description={task.description}
                         day={task.day}
+                        toggleEditButton={toggleEditButton}
                         />
                     )
                 } else {
