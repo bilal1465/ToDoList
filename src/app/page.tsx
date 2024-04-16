@@ -32,7 +32,7 @@ export default function Home() {
   }
 
   const getTaskToEdit = async () => {
-    const response: Response = await fetch('/api/editTask/', {
+    const response: Response = await fetch('/api/getEditTask/', {
       method: 'GET',
     })
 

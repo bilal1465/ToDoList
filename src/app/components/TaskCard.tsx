@@ -32,7 +32,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ title, time, description, da
 
       const handleEdit: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
 
-        await fetch('/api/editTask/', {
+        await fetch('/api/getEditTask/', {
             method: 'POST',
             body: JSON.stringify(data),
           })

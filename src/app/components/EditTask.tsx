@@ -29,7 +29,7 @@ export const EditTask: React.FC<props> = ({toggleEditButton, dayOfTask, toggleFo
     
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        await fetch('/api/updateTask/', {
+        await fetch('/api/editTask/', {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
