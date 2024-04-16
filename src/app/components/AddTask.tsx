@@ -5,11 +5,11 @@ import { PrioritySelection } from "./PrioritySelection";
 
 type props = {
     toggleAddButton: () => void;
-    toggleFormSubmission: () => void;
+    toggleFormSubmissionAdd: () => void;
     dayOfTask: string;
 }
 
-export const AddTask: React.FC<props> = ({toggleAddButton, dayOfTask, toggleFormSubmission}) => {
+export const AddTask: React.FC<props> = ({toggleAddButton, dayOfTask, toggleFormSubmissionAdd}) => {
  
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -50,7 +50,7 @@ export const AddTask: React.FC<props> = ({toggleAddButton, dayOfTask, toggleForm
     const done = (e: FormEvent<HTMLFormElement>) => {
         handleSubmit(e);
         toggleAddButton();
-        toggleFormSubmission();
+        toggleFormSubmissionAdd();
     }
     
     return (

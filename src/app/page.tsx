@@ -14,7 +14,8 @@ export default function Home() {
 
   const [toggleAdd, setAddIsClicked] = useState(false);
   const [dayOfTask, setDay] = useState("");
-  const[isFormSubmitted, setFormSubmitted] = useState(false);
+  const[isFormSubmittedAdd, setFormSubmittedAdd] = useState(false);
+  const[isFormSubmittedEdit, setFormSubmittedEdit] = useState(false);
   const [toggleEdit, setEditIsClicked] = useState(false);
   const [editData, setEditData] = useState({
     title: '',
@@ -36,9 +37,9 @@ export default function Home() {
       method: 'GET',
     })
 
-  const responseData = await response.json();
-  setDay(responseData.day)
-  setEditData({...responseData});
+    const responseData = await response.json();
+    setDay(responseData.day)
+    setEditData({...responseData});
   }
 
   const toggleEditButton = async (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -46,16 +47,21 @@ export default function Home() {
     setEditIsClicked(!toggleEdit);
   }
 
-  const toggleFormSubmission = () => {
-      setFormSubmitted(true);
-      setTimeout(() => {setFormSubmitted(false);}, 3000);
+  const toggleFormSubmissionAdd = () => {
+      setFormSubmittedAdd(true);
+      setTimeout(() => {setFormSubmittedAdd(false);}, 3000);
   }
   
+  const toggleFormSubmissionEdit = () => {
+    setFormSubmittedEdit(true);
+    setTimeout(() => {setFormSubmittedEdit(false);}, 3000);
+}
+
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   return (
     <main className="flex overflow-hidden">
-      {toggleAdd && <AddTask dayOfTask={dayOfTask} toggleAddButton={toggleAddButton} toggleFormSubmission={toggleFormSubmission}/>}
-      {toggleEdit && <EditTask dayOfTask={dayOfTask} toggleEditButton={toggleEditButton} toggleFormSubmission={toggleFormSubmission} 
+      {toggleAdd && <AddTask dayOfTask={dayOfTask} toggleAddButton={toggleAddButton} toggleFormSubmissionAdd={toggleFormSubmissionAdd}/>}
+      {toggleEdit && <EditTask dayOfTask={dayOfTask} toggleEditButton={toggleEditButton} toggleFormSubmissionEdit={toggleFormSubmissionEdit} 
       title={editData.title} time={editData.time} description={editData.description} day={editData.day} />}
       <div className="flex grid grid-cols-7 h-screen w-screen">
         {days.map((day) => (
@@ -63,10 +69,17 @@ export default function Home() {
             <DayColumn day={day} jsonData={jsonData} toggleAddButton={toggleAddButton} toggleEditButton={toggleEditButton}/>
           </div>
         ))}       
-        {isFormSubmitted && 
+        {isFormSubmittedAdd && 
           <AnimatedElementRight>
             <div className="p-2 bg-white rounded shadow-lg" >
               <h2 className="text-2xl">Task Added!</h2>
+            </div>
+          </AnimatedElementRight>
+          } 
+        {isFormSubmittedEdit && 
+          <AnimatedElementRight>
+            <div className="p-2 bg-white rounded shadow-lg" >
+              <h2 className="text-2xl">Task Edited!</h2>
             </div>
           </AnimatedElementRight>
           } 
