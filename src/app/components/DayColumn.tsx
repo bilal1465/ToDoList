@@ -16,12 +16,12 @@ type DayColumnProps = {
     day: string;
     jsonData?: TaskCardData[];
     toggleAddButton: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    toggleEditButton: () => void;
+    toggleEditButtonOn: () => void;
 };
 
 
 
-export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleAddButton, toggleEditButton}) => {
+export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleAddButton, toggleEditButtonOn}) => {
 
     const [filteredTasks, setFilteredTasks] = useState<TaskCardData[]>(jsonData);
     
@@ -50,7 +50,7 @@ export const DayColumn: React.FC<DayColumnProps> = ({day, jsonData = [], toggleA
                         time={task.time} 
                         description={task.description}
                         day={task.day}
-                        toggleEditButton={toggleEditButton}
+                        toggleEditButton={toggleEditButtonOn}
                         />
                     )
                 } else {

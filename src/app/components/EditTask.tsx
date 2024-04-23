@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { PrioritySelection } from "./PrioritySelection";
 
 type props = {
-    toggleEditButton: () => void;
+    toggleEditButtonOff: () => void;
     toggleFormSubmissionEdit: () => void;
     dayOfTask: string;
     title: string; 
@@ -13,7 +13,7 @@ type props = {
     day: string;
 }
 
-export const EditTask: React.FC<props> = ({toggleEditButton, dayOfTask, toggleFormSubmissionEdit, title, time, description, day}) => {
+export const EditTask: React.FC<props> = ({toggleEditButtonOff, dayOfTask, toggleFormSubmissionEdit, title, time, description, day}) => {
  
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -53,7 +53,7 @@ export const EditTask: React.FC<props> = ({toggleEditButton, dayOfTask, toggleFo
 
     const done = (e: FormEvent<HTMLFormElement>) => {
         handleSubmit(e);
-        toggleEditButton();
+        toggleEditButtonOff();
         toggleFormSubmissionEdit();
     }
     
@@ -89,7 +89,7 @@ export const EditTask: React.FC<props> = ({toggleEditButton, dayOfTask, toggleFo
             </div>
             <div className="flex flex-row space-x-2 pt-1 pb-1 w-11/12">
             <button type="submit" className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Done</button>
-            <button type="button" onClick={toggleEditButton} className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Cancel</button>
+            <button type="button" onClick={toggleEditButtonOff} className="w-full bg-black text-white p-2 text-left rounded hover:scale-95 duration-150">Cancel</button>
             </div>
         </form>
         </div>
